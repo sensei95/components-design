@@ -75,22 +75,18 @@ input::placeholder {
 
 /* Design custom field 1 */
 
-.custom-field-1,
-.custom-field-2,
-.custom-field-3 {
+.form-field {
   position: relative;
   font-size: 13px;
   padding-top: 20px;
   margin-bottom: 5px;
 }
 
-.custom-field-1 input {
+.form-field input {
   background-color: #f2f2f2;
 }
 
-.custom-field-1 .placeholder,
-.custom-field-2 .placeholder,
-.custom-field-3 .placeholder {
+.form-field .placeholder {
   position: absolute;
   left: 12px;
   top: calc(50% + 10px);
@@ -101,12 +97,8 @@ input::placeholder {
     font-weight 0.3s ease;
 }
 
-.custom-field-1 input:focus + .placeholder,
-.custom-field-1 input:valid + .placeholder,
-.custom-field-2 input:focus + .placeholder,
-.custom-field-2 input:valid + .placeholder,
-.custom-field-3 input:focus + .placeholder,
-.custom-field-3 input:valid + .placeholder {
+.form-field input:focus + .placeholder,
+.form-field input.dirty + .placeholder {
   top: -5px;
   font-size: 12px;
   color: #222;
@@ -115,29 +107,31 @@ input::placeholder {
 
 /* Design custom input field 2 */
 
-.custom-field-2 input {
+.form-field.two input {
   background: none;
   border: 1.5px solid #ddd;
 }
 
-.custom-field-2 input:focus,
-.custom-field-2 input:valid {
+.form-field.two input:focus,
+.form-field.two input.dirty {
   border-color: #222;
   transition-delay: 0.1s;
 }
 
-.custom-field-2 input + .placeholder {
+.form-field.two input + .placeholder {
   padding: 0 5px;
   left: 8px;
 }
 
-.custom-field-2 input:focus + .placeholder,
-.custom-field-2 input:valid + .placeholder {
+.form-field.two input:focus + .placeholder,
+.form-field.two input.dirty + .placeholder {
   top: 7px !important;
   background-color: #fff;
 }
 
-.custom-field-3 input {
+/* Design custom input field 3 */
+
+.form-field.three input {
   border-radius: 3px 3px 0 0 !important;
   background: linear-gradient(90deg, #222, #222) center bottom/0 2px no-repeat,
     linear-gradient(90deg, #ccc, #ccc) left bottom/100% 2px no-repeat,
@@ -146,7 +140,84 @@ input::placeholder {
   transition: background-size 0.3s ease;
 }
 
-.custom-field-3 input:valid,
-.custom-field-3 input:focus {
+.form-field.three input.dirty,
+.form-field.three input:focus {
   background-size: 100% 2px, 100% 2px, 100%;
+}
+
+/* Design custom input field 4 */
+
+.form-field.four {
+  --draw-duration: 0.2s;
+  --draw-color: #222;
+  --draw-line-width: 2px;
+  --draw-easing: linear;
+}
+
+.form-field.four .border {
+  height: calc(100% + 5px);
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 8px;
+  border-radius: 3px;
+  cursor: text;
+}
+
+.form-field.four .border::before,
+.form-field.four .border::after {
+  content: "";
+  display: block;
+  height: 0;
+  width: 0;
+  position: absolute;
+  border-radius: 3px;
+  cursor: text;
+  transition: width var(--draw-duration) var(--draw-easing),
+    height var(--draw-duration) var(--draw-easing);
+}
+
+.form-field.four .border::after {
+  top: 0;
+  right: 0;
+  border-left: 0px solid var(--draw-color);
+  border-top: 0px solid var(--draw-color);
+  transition: border-width 0s var(--draw-easing) calc(var(--draw-duration) * 2),
+    width var(--draw-duration) var(--draw-easing) var(--draw-duration),
+    height var(--draw-duration);
+}
+
+.form-field.four .border::before {
+  bottom: 0;
+  left: 0;
+  border-right: 0px solid var(--draw-color);
+  border-bottom: 0px solid var(--draw-color);
+  transition: border-width var(--draw-duration) var(--draw-easing)
+      calc(var(--draw-duration) * 4),
+    width var(--draw-duration) var(--draw-easing) calc(var(--draw-duration) * 3),
+    height var(--draw-duration) var(--draw-easing)
+      calc(var(--draw-duration) * 2);
+}
+
+.form-field.four input.dirty ~ .border::before,
+.form-field.four input:focus ~ .border::before,
+.form-field.four input.dirty ~ .border::after,
+.form-field.four input:focus ~ .border::after {
+  height: 100% !important;
+  width: 250px !important;
+  border-width: var(--draw-line-width);
+}
+
+.form-field.four input.dirty ~ .border::before,
+.form-field.four input:focus ~ .border::before {
+  transition: width var(--draw-duration) var(--draw-easing),
+    height var(--draw-duration) var(--draw-easing) var(--draw-duration);
+}
+
+.form-field.four input.dirty ~ .border::after,
+.form-field.four input:focus ~ .border::after {
+  transition: border-width 0s var(--draw-easing) calc(var(--draw-duration) * 2),
+    width var(--draw-duration) var(--draw-easing) calc(var(--draw-duration) * 2),
+    height var(--draw-duration) var(--draw-easing)
+      calc(var(--draw-duration) * 3);
 }
