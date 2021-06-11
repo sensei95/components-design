@@ -1,0 +1,105 @@
+* {
+  font-family: "JetBrains Mono", monospace;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100vh;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  font-size: 14px;
+  align-items: center;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+a,
+a:hover,
+a:visited {
+  color: inherit;
+  text-decoration: none;
+}
+
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+.section-header {
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+input {
+  border: none;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: #f2f2f2;
+  padding: 12px;
+  border-radius: 3px;
+  min-width: 250px;
+  outline: none;
+}
+
+/* input:focus::placeholder {
+  color: transparent;
+}
+
+input::placeholder {
+  color: #222;
+} */
+
+/* Design custom field 1 */
+
+.custom-field-1 {
+  position: relative;
+  font-size: 13px;
+  padding-top: 20px;
+  margin-bottom: 5px;
+}
+
+.custom-field-1 input {
+  font-size: 13px;
+}
+
+.custom-field-1 .placeholder {
+  position: absolute;
+  left: 12px;
+  top: calc(50% + 10px);
+  transform: translateY(-50%);
+  color: #aaa;
+  cursor: text;
+  transition: top 0.3s ease, font-size 0.3s ease, color 0.3s ease,
+    font-weight 0.3s ease;
+}
+
+.custom-field-1 input:focus + .placeholder,
+.custom-field-1 input:valid + .placeholder {
+  top: -5px;
+  font-size: 12px;
+  color: #222;
+  font-weight: 600;
+}
