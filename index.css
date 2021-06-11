@@ -48,7 +48,7 @@ a:visited {
 .section-header {
   font-weight: bold;
   font-size: 20px;
-  margin-bottom: 20px;
+  margin: 30px 0;
 }
 
 input {
@@ -57,11 +57,12 @@ input {
   -ms-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background-color: #f2f2f2;
+
   padding: 12px;
   border-radius: 3px;
   min-width: 250px;
   outline: none;
+  font-size: 13px;
 }
 
 /* input:focus::placeholder {
@@ -74,7 +75,9 @@ input::placeholder {
 
 /* Design custom field 1 */
 
-.custom-field-1 {
+.custom-field-1,
+.custom-field-2,
+.custom-field-3 {
   position: relative;
   font-size: 13px;
   padding-top: 20px;
@@ -82,10 +85,12 @@ input::placeholder {
 }
 
 .custom-field-1 input {
-  font-size: 13px;
+  background-color: #f2f2f2;
 }
 
-.custom-field-1 .placeholder {
+.custom-field-1 .placeholder,
+.custom-field-2 .placeholder,
+.custom-field-3 .placeholder {
   position: absolute;
   left: 12px;
   top: calc(50% + 10px);
@@ -97,9 +102,51 @@ input::placeholder {
 }
 
 .custom-field-1 input:focus + .placeholder,
-.custom-field-1 input:valid + .placeholder {
+.custom-field-1 input:valid + .placeholder,
+.custom-field-2 input:focus + .placeholder,
+.custom-field-2 input:valid + .placeholder,
+.custom-field-3 input:focus + .placeholder,
+.custom-field-3 input:valid + .placeholder {
   top: -5px;
   font-size: 12px;
   color: #222;
   font-weight: 600;
+}
+
+/* Design custom input field 2 */
+
+.custom-field-2 input {
+  background: none;
+  border: 1.5px solid #ddd;
+}
+
+.custom-field-2 input:focus,
+.custom-field-2 input:valid {
+  border-color: #222;
+  transition-delay: 0.1s;
+}
+
+.custom-field-2 input + .placeholder {
+  padding: 0 5px;
+  left: 8px;
+}
+
+.custom-field-2 input:focus + .placeholder,
+.custom-field-2 input:valid + .placeholder {
+  top: 7px !important;
+  background-color: #fff;
+}
+
+.custom-field-3 input {
+  border-radius: 3px 3px 0 0 !important;
+  background: linear-gradient(90deg, #222, #222) center bottom/0 2px no-repeat,
+    linear-gradient(90deg, #ccc, #ccc) left bottom/100% 2px no-repeat,
+    linear-gradient(90deg, #fafafa, #fafafa) left bottom/100% no-repeat;
+
+  transition: background-size 0.3s ease;
+}
+
+.custom-field-3 input:valid,
+.custom-field-3 input:focus {
+  background-size: 100% 2px, 100% 2px, 100%;
 }
